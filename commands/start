@@ -5,7 +5,7 @@ set -e
 if [ -f cidfile ] ; then
   podman start $(cat cidfile)
 else
-  IMAGE_TAG=bingecraft-net/minecraft-server
+  IMAGE_TAG=bingecraft-net/antimatter
 
   mkdir -p backups
 
