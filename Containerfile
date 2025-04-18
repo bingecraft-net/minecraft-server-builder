@@ -17,6 +17,8 @@ ARG PAPER_VERSION
 
 RUN curl -sLo paper.jar https://api.papermc.io/v2/projects/paper/versions/$MINECRAFT_VERSION/builds/$PAPER_VERSION/downloads/paper-$MINECRAFT_VERSION-$PAPER_VERSION.jar
 
+RUN curl -SLO https://github.com/BlueMap-Minecraft/BlueMap/releases/download/v5.7/bluemap-5.7-paper.jar
+
 RUN useradd -m minecraft
 
 USER minecraft
@@ -30,5 +32,7 @@ ENV PATH="$PATH:/home/minecraft/.local/bin"
 COPY --chown=minecraft ./overrides server
 
 WORKDIR server
+
+RUN ln -s /opt/bluemap-5.7-paper.jar plugins/
 
 CMD exec start java -jar /opt/paper.jar
