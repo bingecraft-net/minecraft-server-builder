@@ -13,6 +13,8 @@ WORKDIR /opt
 
 RUN curl -sLO https://api.papermc.io/v2/projects/paper/versions/1.21.5/builds/5/downloads/paper-1.21.5-5.jar
 
+RUN curl -SLO https://github.com/BlueMap-Minecraft/BlueMap/releases/download/v5.7/bluemap-5.7-paper.jar
+
 RUN useradd -m minecraft
 
 USER minecraft
@@ -26,5 +28,7 @@ ENV PATH="$PATH:/home/minecraft/.local/bin"
 COPY --chown=minecraft ./overrides server
 
 WORKDIR server
+
+RUN ln -s /opt/bluemap-5.7-paper.jar plugins/
 
 CMD exec start java -jar /opt/paper-1.21.5-5.jar
