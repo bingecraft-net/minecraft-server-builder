@@ -10,6 +10,9 @@ wavy-bacon is two things:
 1. [git](https://git-scm.com/)
 2. [podman](https://podman.io/)
 3. create a `backups/` folder or symlink next to `Containerfile`
+4. create a `secrets/` folder or symlink next to `Containerfile`
+5. create a `secrets/forwarding.secret` file with secret material for Velocity modern player information forwarding
+   - consider something like: `head -c 1024 /dev/random | base64 -w 0 > secrets/forwarding.secret`
 
 ## usage
 
