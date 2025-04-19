@@ -5,22 +5,20 @@ set -e
 if [ -f cidfile ] ; then
   podman start $(cat cidfile)
 else
-  IMAGE_TAG=bingecraft-net/minecraft-server/paper
+  IMAGE_TAG=bingecraft-net/velocity-server
 
   podman build \
-    --build-arg MINECRAFT_VERSION=1.21.5 \
-    --build-arg PAPER_VERSION=5 \
+    --build-arg VELOCITY_VERSION=3.4.0-SNAPSHOT \
+    --build-arg VELOCITY_BUILD=496 \
     --tag $IMAGE_TAG \
     .
-
-  mkdir -p backups
 
   podman run \
     --cidfile cidfile \
     --detach \
     --interactive \
     --publish 25565:25565 \
-    --volume $(readlink -f backups):/home/minecraft/backups:U \
+    -v $(readlink -f secrets):/home/minecraft/secrets \
     $IMAGE_TAG
 fi
 
