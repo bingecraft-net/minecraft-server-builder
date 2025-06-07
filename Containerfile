@@ -11,11 +11,13 @@ RUN curl -sLO https://github.com/itzg/rcon-cli/releases/download/1.6.9/rcon-cli_
 
 WORKDIR /opt
 
-RUN curl -sLO https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.4.0/forge-1.20.1-47.4.0-installer.jar
+ARG FORGE_VERSION=1.20.1-47.4.0
 
-RUN java -jar /opt/forge-1.20.1-47.4.0-installer.jar --installServer server
+RUN curl -sLO https://maven.minecraftforge.net/net/minecraftforge/forge/$FORGE_VERSION/forge-$FORGE_VERSION-installer.jar
 
-RUN rm forge-1.20.1-47.4.0-installer.jar*
+RUN java -jar /opt/forge-$FORGE_VERSION-installer.jar --installServer server
+
+RUN rm forge-$FORGE_VERSION-installer.jar*
 
 ARG PACK_NAME=Monifactory-Beta
 
