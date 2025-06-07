@@ -19,7 +19,7 @@ RUN rm forge-1.20.1-47.4.0-installer.jar*
 
 ARG PACK_NAME=Monifactory-Beta
 
-ARG PACK_VERSION=0.12.4
+ARG PACK_VERSION=0.12.6
 
 RUN curl -SLO https://github.com/ThePansmith/Monifactory/releases/download/$PACK_VERSION/$PACK_NAME.$PACK_VERSION-server.zip
 
