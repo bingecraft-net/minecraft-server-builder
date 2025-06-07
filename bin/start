@@ -7,7 +7,7 @@ if [ "$executable" = "" ] ; then
   exit 1
 fi
 
-if [ ! -d world ] ; then
+if [ ! -d world ] && find $HOME/backups -name '*.tar.gz' ; then
   latest="$(ls -t $HOME/backups/*.tar.gz | head -1)"
   if [ "$latest" != "" ] ; then
     tar xf $latest
