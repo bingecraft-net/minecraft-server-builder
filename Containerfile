@@ -17,11 +17,15 @@ RUN java -jar /opt/forge-1.20.1-47.4.0-installer.jar --installServer server
 
 RUN rm forge-1.20.1-47.4.0-installer.jar*
 
-RUN curl -SLO https://github.com/ThePansmith/Monifactory/releases/download/0.12.4/Monifactory-Beta.0.12.4-server.zip
+ARG PACK_NAME=Monifactory-Beta
 
-RUN unzip -d pack /opt/Monifactory-Beta.0.12.4-server.zip
+ARG PACK_VERSION=0.12.4
 
-RUN rm Monifactory-Beta.0.12.4-server.zip
+RUN curl -SLO https://github.com/ThePansmith/Monifactory/releases/download/$PACK_VERSION/$PACK_NAME.$PACK_VERSION-server.zip
+
+RUN unzip -d pack /opt/$PACK_NAME.$PACK_VERSION-server.zip
+
+RUN rm $PACK_NAME.$PACK_VERSION-server.zip
 
 RUN useradd -m minecraft
 
