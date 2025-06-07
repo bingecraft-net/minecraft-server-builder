@@ -5,7 +5,7 @@ set -e
 if [ -f cidfile ] ; then
   podman start $(cat cidfile)
 else
-  IMAGE_TAG=wavy-bacon
+  IMAGE_TAG=bingecraft-net/minecraft-server
 
   mkdir -p backups
 
