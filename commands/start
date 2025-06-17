@@ -11,7 +11,7 @@ else
     --build-arg MINECRAFT_VERSION=1.20.1 \
     --build-arg FORGE_VERSION=47.4.0 \
     --build-arg PACK_NAME=Monifactory-Beta \
-    --build-arg PACK_VERSION=0.12.6 \
+    --build-arg PACK_VERSION=0.12.7 \
     --tag $IMAGE_TAG \
     .
 

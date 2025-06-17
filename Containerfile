@@ -33,6 +33,8 @@ RUN unzip -d pack /opt/$PACK_NAME.$PACK_VERSION-server.zip
 
 RUN rm $PACK_NAME.$PACK_VERSION-server.zip
 
+RUN find pack -name '*@*' -exec rm {} \;
+
 RUN useradd -m minecraft
 
 USER minecraft
