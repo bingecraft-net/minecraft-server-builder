@@ -11,7 +11,11 @@ RUN curl -sLO https://github.com/itzg/rcon-cli/releases/download/1.6.9/rcon-cli_
 
 WORKDIR /opt
 
-RUN curl -sLO https://api.papermc.io/v2/projects/paper/versions/1.21.5/builds/5/downloads/paper-1.21.5-5.jar
+ARG MINECRAFT_VERSION
+
+ARG PAPER_VERSION
+
+RUN curl -sLo paper.jar https://api.papermc.io/v2/projects/paper/versions/$MINECRAFT_VERSION/builds/$PAPER_VERSION/downloads/paper-$MINECRAFT_VERSION-$PAPER_VERSION.jar
 
 RUN useradd -m minecraft
 
@@ -27,4 +31,4 @@ COPY --chown=minecraft ./overrides server
 
 WORKDIR server
 
-CMD exec start java -jar /opt/paper-1.21.5-5.jar
+CMD exec start java -jar /opt/paper.jar

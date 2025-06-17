@@ -5,9 +5,13 @@ set -e
 if [ -f cidfile ] ; then
   podman start $(cat cidfile)
 else
-  IMAGE_TAG=bingecraft-net/minecraft-server
+  IMAGE_TAG=bingecraft-net/minecraft-server/paper
 
-  podman build -t $IMAGE_TAG .
+  podman build \
+    --build-arg MINECRAFT_VERSION=1.21.5 \
+    --build-arg PAPER_VERSION=5 \
+    --tag $IMAGE_TAG \
+    .
 
   mkdir -p backups
 
