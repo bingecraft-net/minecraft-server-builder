@@ -27,7 +27,7 @@ ARG PACK_NAME
 
 ARG PACK_VERSION
 
-RUN curl -SLO https://github.com/ThePansmith/Monifactory/releases/download/$PACK_VERSION/$PACK_NAME.$PACK_VERSION-server.zip
+RUN curl -sfLO https://github.com/ThePansmith/Monifactory/releases/download/$PACK_VERSION/$PACK_NAME.$PACK_VERSION-server.zip
 
 RUN unzip -d pack /opt/$PACK_NAME.$PACK_VERSION-server.zip
 
