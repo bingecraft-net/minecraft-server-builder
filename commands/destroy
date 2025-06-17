@@ -2,4 +2,3 @@
 
 podman stop $(cat cidfile)
 podman rm $(cat cidfile)
-rm cidfile

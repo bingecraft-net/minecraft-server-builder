@@ -7,13 +7,17 @@ if [ -f cidfile ] ; then
 else
   IMAGE_TAG=bingecraft-net/minecraft-server
 
+  podman build -t $IMAGE_TAG .
+
   mkdir -p backups
 
-  podman build -t $IMAGE_TAG .
-  podman run -di \
-    -p 25565:25565 \
-    -v $(readlink -f backups):/home/minecraft/backups:U \
-    $IMAGE_TAG > cidfile
+  podman run \
+    --cidfile cidfile \
+    --detach \
+    --interactive \
+    --publish 25565:25565 \
+    --volume $(readlink -f backups):/home/minecraft/backups:U \
+    $IMAGE_TAG
 fi
 
 podman logs --follow $(cat cidfile)
