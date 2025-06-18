@@ -23,15 +23,17 @@ RUN rm forge-$MINECRAFT_VERSION-$FORGE_VERSION-installer.jar*
 
 RUN sed -i 's/^java/exec java/' server/run.sh
 
-ARG PACK_NAME
+ARG MONI_VERSION
 
-ARG PACK_VERSION
+RUN curl \
+  --fail \
+  --location \
+  --remote-name \
+  https://github.com/ThePansmith/Monifactory/releases/download/$MONI_VERSION/Monifactory-Beta.$MONI_VERSION-server.zip
 
-RUN curl -sfLO https://github.com/ThePansmith/Monifactory/releases/download/$PACK_VERSION/$PACK_NAME.$PACK_VERSION-server.zip
+RUN unzip -d pack /opt/Monifactory-Beta.$MONI_VERSION-server.zip
 
-RUN unzip -d pack /opt/$PACK_NAME.$PACK_VERSION-server.zip
-
-RUN rm $PACK_NAME.$PACK_VERSION-server.zip
+RUN rm Monifactory-Beta.$MONI_VERSION-server.zip
 
 RUN useradd -m minecraft
 

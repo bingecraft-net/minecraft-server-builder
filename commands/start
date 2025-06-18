@@ -5,13 +5,17 @@ set -e
 if [ -f cidfile ] ; then
   podman start $(cat cidfile)
 else
-  IMAGE_TAG=bingecraft-net/minecraft-server/monifactory
+
+  MINECRAFT_VERSION=1.20.1
+  FORGE_VERSION=47.4.0
+  MONI_VERSION=0.12.8
+
+  IMAGE_TAG=bingecraft.net/minecraft-server/$MINECRAFT_VERSION/forge/$FORGE_VERSION/moni:$MONI_VERSION
 
   podman build \
-    --build-arg MINECRAFT_VERSION=1.20.1 \
-    --build-arg FORGE_VERSION=47.4.0 \
-    --build-arg PACK_NAME=Monifactory-Beta \
-    --build-arg PACK_VERSION=0.12.8 \
+    --build-arg MINECRAFT_VERSION=$MINECRAFT_VERSION \
+    --build-arg FORGE_VERSION=$FORGE_VERSION \
+    --build-arg MONI_VERSION=$MONI_VERSION \
     --tag $IMAGE_TAG \
     .
 
@@ -24,6 +28,7 @@ else
     --publish 25565:25565 \
     --volume $(readlink -f backups):/home/minecraft/backups:U \
     $IMAGE_TAG
+
 fi
 
 podman logs --follow $(cat cidfile)
