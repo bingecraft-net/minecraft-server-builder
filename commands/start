@@ -9,7 +9,7 @@ else
 
   podman build \
     --build-arg VELOCITY_VERSION=3.4.0-SNAPSHOT \
-    --build-arg VELOCITY_BUILD=496 \
+    --build-arg VELOCITY_BUILD=515 \
     --tag $IMAGE_TAG \
     .
 
