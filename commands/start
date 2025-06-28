@@ -21,7 +21,7 @@ else
     --detach \
     --interactive \
     --publish 25565:25565 \
-    -v $(readlink -f secrets):/home/minecraft/secrets \
+    --volume $(readlink -f secrets):/home/minecraft/secrets \
     $IMAGE_TAG
 fi
 
