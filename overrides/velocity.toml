@@ -77,6 +77,7 @@ enable-player-address-logging = true
 [servers]
 # Configure your servers here. Each key represents the server's name, and the value
 # represents the IP address of the server to connect to.
+antimatter = "host.containers.internal:25567"
 wavy-bacon = "host.containers.internal:25566"
 
 # In what order we should try servers when a player logs in or is kicked from a server.
@@ -85,8 +86,8 @@ try = [
 
 [forced-hosts]
 # Configure your forced hosts here.
-"localhost" = [
-    "wavy-bacon"
+"antimatter.bingecraft.net" = [
+    "antimatter"
 ]
 "wavy-bacon.bingecraft.net" = [
     "wavy-bacon"
