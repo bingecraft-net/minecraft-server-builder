@@ -14,6 +14,9 @@ if [ ! -d world ] && find $HOME/backups -name '*.tar.gz' ; then
   fi
 fi
 
+if [ ! -f config/pcf-common.toml ] ; then
+  echo "[modernForwarding]\nforwardingSecret = \"$(cat /home/minecraft/secrets/forwarding.secret)\"" > config/pcf-common.toml
+fi
 
 if [ ! -f eula.txt ] ; then
   eval "$executable"

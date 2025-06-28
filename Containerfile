@@ -35,6 +35,8 @@ RUN unzip -d pack /opt/Monifactory-Beta.$MONI_VERSION-server.zip
 
 RUN rm Monifactory-Beta.$MONI_VERSION-server.zip
 
+RUN curl -sfLo pcf.jar https://cdn.modrinth.com/data/vDyrHl8l/versions/jfiEc2mQ/proxy-compatible-forge-1.1.7.jar
+
 RUN useradd -m minecraft
 
 USER minecraft
@@ -52,5 +54,7 @@ RUN cp -r /opt/pack/overrides/* server
 COPY --chown=minecraft ./overrides/* server
 
 WORKDIR server
+
+RUN ln -s /opt/pcf.jar mods/
 
 CMD exec start ./run.sh
