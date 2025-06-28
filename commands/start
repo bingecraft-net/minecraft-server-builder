@@ -5,11 +5,14 @@ set -e
 if [ -f cidfile ] ; then
   podman start $(cat cidfile)
 else
-  IMAGE_TAG=bingecraft-net/velocity-server
+  VELOCITY_VERSION=3.4.0-SNAPSHOT
+  VELOCITY_BUILD=515
+
+  IMAGE_TAG=bingecraft-net/velocity-server:$VELOCITY_VERSION-$VELOCITY_BUILD
 
   podman build \
-    --build-arg VELOCITY_VERSION=3.4.0-SNAPSHOT \
-    --build-arg VELOCITY_BUILD=515 \
+    --build-arg VELOCITY_VERSION=$VELOCITY_VERSION \
+    --build-arg VELOCITY_BUILD=$VELOCITY_BUILD \
     --tag $IMAGE_TAG \
     .
 
