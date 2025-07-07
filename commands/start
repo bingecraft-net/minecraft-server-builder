@@ -8,7 +8,8 @@ else
 
   MINECRAFT_VERSION=1.20.1
   FORGE_VERSION=47.4.0
-  MONI_VERSION=0.12.8
+  MONI_VERSION=0.12.9
+  MONI_VERSION_TYPE=Release
 
   IMAGE_TAG=bingecraft.net/minecraft-server/$MINECRAFT_VERSION/forge/$FORGE_VERSION/moni:$MONI_VERSION
 
@@ -16,6 +17,7 @@ else
     --build-arg MINECRAFT_VERSION=$MINECRAFT_VERSION \
     --build-arg FORGE_VERSION=$FORGE_VERSION \
     --build-arg MONI_VERSION=$MONI_VERSION \
+    --build-arg MONI_VERSION_TYPE=$MONI_VERSION_TYPE \
     --tag $IMAGE_TAG \
     .
 

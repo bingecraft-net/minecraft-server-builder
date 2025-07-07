@@ -25,15 +25,17 @@ RUN sed -i 's/^java/exec java/' server/run.sh
 
 ARG MONI_VERSION
 
+ARG MONI_VERSION_TYPE
+
 RUN curl \
   --fail \
   --location \
   --remote-name \
-  https://github.com/ThePansmith/Monifactory/releases/download/$MONI_VERSION/Monifactory-Beta.$MONI_VERSION-server.zip
+  https://github.com/ThePansmith/Monifactory/releases/download/$MONI_VERSION/Monifactory-$MONI_VERSION_TYPE.$MONI_VERSION-server.zip
 
-RUN unzip -d pack /opt/Monifactory-Beta.$MONI_VERSION-server.zip
+RUN unzip -d pack /opt/Monifactory-$MONI_VERSION_TYPE.$MONI_VERSION-server.zip
 
-RUN rm Monifactory-Beta.$MONI_VERSION-server.zip
+RUN rm Monifactory-$MONI_VERSION_TYPE.$MONI_VERSION-server.zip
 
 RUN curl -sfLo pcf.jar https://cdn.modrinth.com/data/vDyrHl8l/versions/jfiEc2mQ/proxy-compatible-forge-1.1.7.jar
 
