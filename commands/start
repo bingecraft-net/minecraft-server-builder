@@ -8,8 +8,8 @@ else
   IMAGE_TAG=bingecraft-net/minecraft-server/paper
 
   podman build \
-    --build-arg MINECRAFT_VERSION=1.21.6 \
-    --build-arg PAPER_VERSION=27 \
+    --build-arg MINECRAFT_VERSION=1.21.7 \
+    --build-arg PAPER_VERSION=17 \
     --tag $IMAGE_TAG \
     .
 
