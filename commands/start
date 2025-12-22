@@ -7,7 +7,7 @@ if [ -f cidfile ] ; then
 else
 
   VELOCITY_VERSION=3.4.0-SNAPSHOT
-  VELOCITY_BUILD=521
+  VELOCITY_BUILD=558
 
   IMAGE_TAG=bingecraft-net/velocity-server:$VELOCITY_VERSION-$VELOCITY_BUILD
 
